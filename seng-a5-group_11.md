@@ -110,9 +110,7 @@ This allowed us to fine-tune the MTTF and identify the **exact point** where a f
 
 Thus, **98 failures per 5 intervals** was selected as a reasonable and safe **MTTF<sub>min</sub> approximation**, corresponding to:
 
-\[
-\text{MTTF}_{\text{min}} \approx \frac{5}{98} \approx 0.051
-\]
+MTTF<sub>min</sub> ≈ <sup>5</sup>&frasl;<sub>98</sub> ≈ 0.051
 
 ---
 
