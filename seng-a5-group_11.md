@@ -103,7 +103,7 @@ This allowed us to fine-tune the MTTF and identify the **exact point** where a f
 
 - Setting it back to **98 failures per 5 intervals**, the 13th failure stays within the **Continue Test** zone:
 
-  ![MTTF-check-passed](Part%202/screenshots/MTTF-check-failed.jpg)
+  ![MTTF-check-passed](Part%202/screenshots/MTTF-check-passed.jpg)
 
 Thus, **98 failures per 5 intervals** was selected as a reasonable and safe **MTTF<sub>min</sub> approximation**, corresponding to:
 
