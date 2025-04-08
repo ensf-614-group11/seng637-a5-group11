@@ -81,9 +81,8 @@ To determine the minimum Mean Time To Failure (**MTTF<sub>min</sub>**), we first
 
 Modifying these values would automatically adjust the calculated MTTF and update the **R-Demo-Chart** graph. The goal was to observe how the plotted failure points fell relative to the **Accept**, **Continue Test**, and **Reject** zones.
 
----
 
-### Visual Understanding of MTTF Behavior
+#### Visual Understanding of MTTF Behavior
 
 We noticed a clear trend:
 
@@ -92,9 +91,7 @@ We noticed a clear trend:
 
 With this understanding, we iteratively adjusted the MTTF value until the plotted failures were **as close as possible to the Reject zone without entering it** — a visual estimate of the threshold.
 
----
-
-### Numerical Precision: The "MTTF Check" Tab
+#### Numerical Precision: The "MTTF Check" Tab
 
 To enhance precision, we added a new worksheet to the RDC workbook called **MTTF Check**, which evaluates whether each failure lies to the **right of the Reject slope**.
 
@@ -112,38 +109,24 @@ Thus, **98 failures per 5 intervals** was selected as a reasonable and safe **MT
 
 MTTF<sub>min</sub> ≈ <sup>5</sup>&frasl;<sub>98</sub> ≈ 0.051
 
----
-
-### Exact MTTF<sub>min</sub> Calculation
+#### Exact MTTF<sub>min</sub> Calculation
 
 While the above is a good practical approximation, we also calculated the **exact** MTTF<sub>min</sub>. Since the 13th failure is the first to touch the Reject slope, we solved for the MTTF at which the normalized x-position of this failure **exactly equals** the x-value of the Reject boundary at that point.
 
 Given:
 
-- The x-value of the Reject slope at the 13th failure is:  
-  $$
-  x_{\text{reject}} = 39.1787104271727
-  $$
+- The x-value of the Reject slope at the 13th failure is: 39.1787104271727
 - The observed failure occurs at 2 units of input event time.
 
-Using the formula for normalized input:
-\[
-\text{Normalized X} = \frac{\text{Input Event}}{\text{MTTF}}
-\]
+Using the formula for normalized input: Normalized X = Input Event / MTTF
 
-We solve for MTTF:
-\[
-\text{MTTF}_{\text{exact}} = \frac{2}{39.1787104271727} \approx 0.0510481324728055
-\]
+We solve for MTTF:  
+MTTF_exact = 2 / 39.1787104271727 ≈ 0.0510481324728055
 
-This can also be expressed as the fraction:
-\[
-\frac{10209626494561}{200000000000000}
-\]
+This can also be expressed as the fraction:  
+10209626494561 / 200000000000000
 
----
-
-### Final Justification
+#### Final Justification
 
 While the exact minimum MTTF is **~0.051048**, using **98 failures per 5 intervals** (i.e., **MTTF ≈ 0.051**) provides a sufficiently close and intuitive approximation for the purposes of this assignment.
 
