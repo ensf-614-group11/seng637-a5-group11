@@ -123,9 +123,9 @@ While the above is a good practical approximation, we also calculated the **exac
 Given:
 
 - The x-value of the Reject slope at the 13th failure is:  
-  \[
+  $$
   x_{\text{reject}} = 39.1787104271727
-  \]
+  $$
 - The observed failure occurs at 2 units of input event time.
 
 Using the formula for normalized input:
