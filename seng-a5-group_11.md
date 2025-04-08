@@ -26,6 +26,25 @@
 
 # Assessment Using Reliability Demonstration Chart 
 
+### Reliability Demonstration Chart Setup
+
+The first step involved modifying the original failure dataset to prepare it for input into the Reliability Demonstration Chart (RDC) workbook. The updated failure data can be viewed [here](Part%202/RDC_spreadsheets/failure-dataset-a5-final.xls).
+
+The original dataset included the following columns:
+- **T**: Time interval  
+- **FC**: Failure count  
+- **E**: Execution time (in hours)  
+- **F**: Failure identification work (in person-hours)  
+- **C**: Computer time for failure identification (in hours)
+
+To plot the RDC graph, two additional columns were derived from the original data:
+- **Cumulative Failure Count**: The cumulative number of failures from the `FC` column, totaling 92 failures. Each individual failure was assigned an index from 1 to 92.
+- **Input Event When Observed**: This represents the time at which each failure occurred, measured in cumulative time intervals. It was assumed that failures occurred uniformly within each time interval.  
+  For example, if 2 failures occurred in time interval 1, the first was placed at 0.5 intervals and the second at 1.0 intervals. This method was applied consistently across the dataset to assign a specific input event time to each failure.
+
+The transformed dataset was then copied into the **"Failure Data"** tab of the RDC workbook.  
+A detailed explanation of how the minimum Mean Time To Failure (MTTF) was calculated from this data is provided in the following section.
+
 ## 3 plots for MTTFmin, twice and half of it for your test data
 
 The following graphs use a standard Risk Profile of the following:
@@ -54,6 +73,8 @@ This demonstrates that when the assumed MTTF is significantly lower than the act
 Note: You can also see the full excel sheet for MTTFmin [here](Part%202/RDC_spreadsheets/Reliability-Demonstration-Chart-final-MTTFhalf.xls).
 
 ## Explain your evaluation and justification of how you decide the MTTFmin
+
+
 
 ## A discussion on the advantages and disadvantages of RDC
 
