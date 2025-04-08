@@ -74,7 +74,80 @@ Note: You can also see the full excel sheet for MTTFmin [here](Part%202/RDC_spre
 
 ## Explain your evaluation and justification of how you decide the MTTFmin
 
+To determine the minimum Mean Time To Failure (**MTTF<sub>min</sub>**), we first took an exploratory approach using the Reliability Demonstration Chart (RDC) workbook. Specifically, in the **Failure Data** tab, we adjusted two key inputs:
 
+- **Maximum Acceptable Number of Failures**
+- **Per Number of Input Events**
+
+Modifying these values would automatically adjust the calculated MTTF and update the **R-Demo-Chart** graph. The goal was to observe how the plotted failure points fell relative to the **Accept**, **Continue Test**, and **Reject** zones.
+
+---
+
+### Visual Understanding of MTTF Behavior
+
+We noticed a clear trend:
+
+- **Increasing** the MTTF shifts the observed failure points **to the left**, closer to or into the **Reject zone**.
+- **Decreasing** the MTTF shifts the points **to the right**, toward the **Accept zone**.
+
+With this understanding, we iteratively adjusted the MTTF value until the plotted failures were **as close as possible to the Reject zone without entering it** — a visual estimate of the threshold.
+
+---
+
+### Numerical Precision: The "MTTF Check" Tab
+
+To enhance precision, we added a new worksheet to the RDC workbook called **MTTF Check**, which evaluates whether each failure lies to the **right of the Reject slope**.
+
+This allowed us to fine-tune the MTTF and identify the **exact point** where a failure crosses into the Reject zone. In the RDC workbook for **MTTF<sub>min</sub>** ([view here](Part%202/RDC_spreadsheets/Reliability-Demonstration-Chart-final-MTTFmin.xls)), we tested the boundary case:
+
+- Setting **FIO** to **97 failures per 5 intervals**, the **13th failure** crosses into the Reject region:
+  
+  ![MTTF-check-failed](Part%202/screenshots/MTTF-check-failed.jpg)
+
+- Setting it back to **98 failures per 5 intervals**, the 13th failure stays within the **Continue Test** zone:
+
+  ![MTTF-check-passed](Part%202/screenshots/MTTF-check-failed.jpg)
+
+Thus, **98 failures per 5 intervals** was selected as a reasonable and safe **MTTF<sub>min</sub> approximation**, corresponding to:
+
+\[
+\text{MTTF}_{\text{min}} \approx \frac{5}{98} \approx 0.051
+\]
+
+---
+
+### Exact MTTF<sub>min</sub> Calculation
+
+While the above is a good practical approximation, we also calculated the **exact** MTTF<sub>min</sub>. Since the 13th failure is the first to touch the Reject slope, we solved for the MTTF at which the normalized x-position of this failure **exactly equals** the x-value of the Reject boundary at that point.
+
+Given:
+
+- The x-value of the Reject slope at the 13th failure is:  
+  \[
+  x_{\text{reject}} = 39.1787104271727
+  \]
+- The observed failure occurs at 2 units of input event time.
+
+Using the formula for normalized input:
+\[
+\text{Normalized X} = \frac{\text{Input Event}}{\text{MTTF}}
+\]
+
+We solve for MTTF:
+\[
+\text{MTTF}_{\text{exact}} = \frac{2}{39.1787104271727} \approx 0.0510481324728055
+\]
+
+This can also be expressed as the fraction:
+\[
+\frac{10209626494561}{200000000000000}
+\]
+
+---
+
+### Final Justification
+
+While the exact minimum MTTF is **~0.051048**, using **98 failures per 5 intervals** (i.e., **MTTF ≈ 0.051**) provides a sufficiently close and intuitive approximation for the purposes of this assignment.
 
 ## A discussion on the advantages and disadvantages of RDC
 
