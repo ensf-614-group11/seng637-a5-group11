@@ -28,7 +28,7 @@
 
 ## 3 plots for MTTFmin, twice and half of it for your test data
 
-![MTTFmin](Part 2/screenshots/R-demo-chart-MTTFmin.jpg)
+![MTTFmin](Part%202/screenshots/R-demo-chart-MTTFmin.jpg)
 
 ## Explain your evaluation and justification of how you decide the MTTFmin
 
