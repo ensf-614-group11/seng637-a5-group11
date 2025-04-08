@@ -28,7 +28,7 @@
 
 ### Reliability Demonstration Chart Setup
 
-The first step involved modifying the original failure dataset to prepare it for input into the Reliability Demonstration Chart (RDC) workbook. The updated failure data can be viewed [here](Part%202/RDC_spreadsheets/failure-dataset-a5-final.xls).
+The first step involved modifying the original failure dataset to prepare it for input into the Reliability Demonstration Chart (RDC) workbook. The updated failure data can be viewed [here](Part%202/RDC_spreadsheets/failure-dataset-a5-final.xlsb).
 
 The original dataset included the following columns:
 - **T**: Time interval  
