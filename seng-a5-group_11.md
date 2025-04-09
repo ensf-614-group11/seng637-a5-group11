@@ -17,12 +17,32 @@
 ## Result of model comparison (selecting top two models)
 
 ## Result of range analysis
+In order to determine the useful range of data for the analysis, a trend check was completed using Laplace tests. Reliablity models should only be used on data where the overall reliability is increasing, therefore this test identifies if the reliability is increasing, decreasing, or stable. The failure data provided for the assignment is in the format of failure count data with failures per interval known, therefore the following formula was used to calculate the Laplace factor for each interval: 
+
+$$
+u(k) = \frac{\left( \sum_{i=1}^{k} (i - 1) \cdot n(i) \right) - \left( \frac{k - 1}{2} \cdot \sum_{i=1}^{k} n(i) \right)}{\sqrt{k^2 - \frac{1}{12} \cdot \sum_{i=1}^{k} n(i)}}
+$$
+
+Where:
+- \( n(i) \) is the number of failures observed during the time interval \( i \), 
+- \( k \) is the total number of time intervals considered (up to the current time interval \( T \)), 
+- The time period is divided into \( k \) equal intervals. 
+
+The tool being used for this assignment (C-SFRAT) does not include functionality for completing trend tests, therefore this was calculated manually using the failure-data-a5.csv file. The calculations are included in the `Laplace_tests_and_graphs.ipynb` file within the Part 1 [here](Part%201/Laplace_tests_and_graphs.ipynb). The Laplace factors for each time interval were calculated and then were plotted.     
+![Laplace](Part%201/laplace_plot.png)
+
+Negative values of the Laplace factor indicate a decreasing failure intensity or reliability growth. Positive values of the Laplace factor indicate an increasing failure intensity, or reliability decrease. Values between -2 and +2 indicate stable reliability. Therefore, Laplace factor values of less than -2 are useful data for the reliability growth model, where there is a decreasing failure intensity and reliability growth. 
+
+As shown in the plot, there is a decrease in reliability in time intervals 1 and 2. Between time intervals 3 and 18, the reliability generally was growing with a few small decreases. Then at time interval 18 there was another decrease in reliability until time interval 23, where the reliability grew again. 
+The range of time intervals that make up the useful data are between 6 and 19 (where the Laplace factor is less than -2). 
 
 ## Plots for failure rate and reliability of the SUT for the test data provided
 
 ## A discussion on decision making given a target failure rate
 
 ## A discussion on the advantages and disadvantages of reliability growth analysis
+
+
 
 # Assessment Using Reliability Demonstration Chart 
 
@@ -141,3 +161,5 @@ While the exact minimum MTTF is **~0.051048**, using **98 failures per 5 interva
 # Difficulties encountered, challenges overcome, and lessons learned
 
 # Comments/feedback on the lab itself
+This lab was confusing as the requirements were pretty unclear, particularly for the reliability growth testing portion. The capabilities of the tool recommended for the lab are quite different from those of CASRE and others shared during the lecture time that are inaccessible, therefore many of the plots and results shown in the lecture slides examples could not be developed from the tool. This resulted in a lot of time spent on manipulating the data and investigating other methods to manually develop the plots and information. It was difficult to understand the models associated with the reliability growth analysis since we didn't cover much detail about the models during the lecture. 
+Overall, there is room for improvement in the clarity and instructions for the lab. 
