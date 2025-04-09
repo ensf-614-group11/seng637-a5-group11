@@ -41,7 +41,8 @@ The range of time intervals that make up the useful data are between 6 and 19 (w
 ## A discussion on decision making given a target failure rate
 
 ## A discussion on the advantages and disadvantages of reliability growth analysis
-
+Reliability growth analysis provides predictions about the reliability of a system over time, which can be used to make decisions regarding priorities for system improvements or resources required for maintenance of a system. Reliability growth analysis can also be useful to identify issues in the system and understand where the focus needs to be to improve overall reliability. The reliability growth models can also help to understand what tests should be run. 
+Some reliability growth models are very complex and therefore require specialized knowledge and expertise to be applied and understood fully. The accuracy of the reliability growth models may depend on the sample size of failure data provided, therefore the usefulness can be limited if there is a limited number of data. The results may also be better if the program has been further developed, so the results may not be as useful for programs in earlier stages of development. Reliability growth models provide predictions, but the results may be different from the predictions if there are other factors that change, since the prediction is made based on the conditions within the failure data available. If there are new types of failures introduced with additional components, or changes that impact the overall system, then the actual results can differ from the model predictions. 
 
 
 # Assessment Using Reliability Demonstration Chart 
