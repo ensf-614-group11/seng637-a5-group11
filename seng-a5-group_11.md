@@ -124,7 +124,7 @@ We solve for MTTF:
 MTTF_exact = 2 / 39.1787104271727 ≈ 0.0510481324728055
 
 This can also be expressed as the fraction:  
-10209626494561 / 200000000000000
+10,209,626,494,561 / 200,000,000,000,000
 
 #### Final Justification
 
