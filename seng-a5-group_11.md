@@ -52,7 +52,7 @@ Plots were created from the failure data to show time between failures, cumulati
 **Cumulative Failures**  
 ![Cumulative Failures](Part%201/screenshots/cumulative_failures.png)  
 
-**Failure Intensity** 
+**Failure Intensity**    
 ![Failure Intensity](Part%201/screenshots/failure_intensity.png) 
 
 **Reliability**   
