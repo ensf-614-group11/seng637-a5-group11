@@ -11,6 +11,7 @@
 |Austen Zhang    |     |
 
 # Introduction
+This lab includes analysis of the given failure data (failure-dataset-a5.csv) using both reliability growth testing and reliability demonstration chart tools. The lab includes getting familiar with various tools to assist with reliability growth testing and reliability demonstration chart analysis, getting familiar with the given failure data and different formats of failure data, understanding metrics related to failures such as failure rate, MTTF, and reliability, and understanding how to use these analyses to inform decision making. Reliability is one metric that can be used to identify when testing can be considered complete - when the measured reliability of the system achieves its target value. 
 
 # Assessment Using Reliability Growth Testing 
 
