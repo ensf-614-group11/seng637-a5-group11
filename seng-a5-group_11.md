@@ -16,6 +16,67 @@ This lab includes analysis of the given failure data (failure-dataset-a5.csv) us
 # Assessment Using Reliability Growth Testing 
 
 ## Result of model comparison (selecting top two models)
+We use C-SFRAT to select a set of models which provide the best fit for the failure data. To do so, we use two approaches, (1) we attempt to fit models to the entire data and assess goodness of fit, (2) we attempt to fit models to the subset of data which we have determined to be reliable using Laplace test.
+
+### **Using full range of data**
+![Goodness of Fit](Part%201/output_plots/CSFRAT_goodness_of_fit_no_subset.png)
+
+The above figure was generated using the C-SFRAT tool using the entire range of the provided failure data. We ran the selected hazard functions for all permutations and combinations of covariates. To select the best model, we pick the models which minimize AIC and BIC.
+
+![Goodness of Fit Comparison](Part%201/output_plots/CSFRAT_goodness_of_fit_no_subset_model_compare.png)
+
+We select DW3(F) and GM(F). 
+
+![Best Models](Part%201/output_plots/CSFRAT_no_subset_best_models.png)
+
+We use DW3(F) and GM(F) to predict future failures.
+
+![Best Models Prediction](Part%201/output_plots/CSFRAT_no_subset_prediction.png)
+
+We use the table to obtain the discrete values for the failures.
+
+![Best Models Prediction Table](Part%201/output_plots/CSFRAT_no_subset_prediction_table.png)
+
+There seems to be a bug in our version of the C-SFRAT tool. When "DW3(F)" and "GM(F)" are selected in the model results, the table which shows predictions appears to provide the data for the incorrect models.
+
+### **Using reliable range of data**
+![Goodness of Fit](Part%201/output_plots/CSFRAT_goodness_reliable_subset.png)
+
+The above figure was generated using the C-SFRAT tool using the reliable range of data.
+
+![Goodness of Fit Comparison](Part%201/output_plots/CSFRAT_goodness_of_fit_reliable_model_compare.png)
+
+We select NB2(F), DW2(F).
+
+![Best Models](Part%201/output_plots/CSFRAT_no_subset_best_models.png)
+
+We use NB2(F) and DW2(F) to predict future failures. This figure also appears to have an error. 
+
+![Best Models Prediction](Part%201/output_plots/CSFRAT_reliable_subset_model_predictions.png)
+
+We use the table to obtain the discrete values for the failures.
+
+![Best Models Prediction Table](Part%201/output_plots/CSFRAT_reliable_subset_model_prediction_table.png)
+
+Again, we observe the save issue where we select model results for DW2(F) and NB2(F). The resulting table shows data for IFRGSB(E, F, C) and DW2(E, C).
+
+### **Failure Intensity**
+
+We use the C-SFRAT tool to build a failure intensity figure.
+![Failure Intensity](Part%201/output_plots/CSFRAT_failure_intensity.png)
+
+### **Software Reliability Testing in R**
+
+An attempt was made to use another tool. This tool was buggy, and we were only able to get it working a few times consistently before the program would fail to generate plots. The goal was to use this tool to be able to compare results with C-SFRAT and the Python Reliability package. The following figures show usage of this tool, but due to our inability to continue working on this tool, we can only provide these figures. 
+
+![SRT](Part%201/output_plots/SRT.png)
+
+![SRT failure intensity](Part%201/output_plots/SRT_failure_intensity.png)
+
+![SRT time between failures](Part%201/output_plots/SRT_tbf.png)
+
+![SRT model predictions](Part%201/output_plots/SRT_model_predictions.png)
+
 
 ## Result of range analysis
 In order to determine the useful range of data for the analysis, a trend check was completed using Laplace tests. Reliablity models should only be used on data where the overall reliability is increasing, therefore this test identifies if the reliability is increasing, decreasing, or stable. The failure data provided for the assignment is in the format of failure count data with failures per interval known, therefore the following formula was used to calculate the Laplace factor for each interval: 
