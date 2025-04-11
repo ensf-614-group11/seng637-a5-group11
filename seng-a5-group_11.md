@@ -38,8 +38,8 @@ As shown in the plot, there is a decrease in reliability in time intervals 1 and
 The range of time intervals that make up the useful data are between 6 and 19 (where the Laplace factor is less than -2). 
 
 ## Plots for failure rate and reliability of the SUT for the test data provided
-### Plots and calculations with raw failure data 
-The overall Failure Rate, MTTF and Reliability of the system under test were calculated for the 31 time intervals provided in the raw failure data. The calculations for these metrics can be found in the file `Laplace_tests_and_graphs.ipynb` [here](Part%201/Laplace_tests_and_graphs.ipynb). 
+### Plots and calculations with input failure data provided
+The overall Failure Rate, MTTF and Reliability of the system under test were calculated for the 31 time intervals provided in the input failure data. The calculations for these metrics can be found in the file `Laplace_tests_and_graphs.ipynb` [here](Part%201/Laplace_tests_and_graphs.ipynb). 
 
 **Failure Rate:** 2.968
 **MTTF:** 0.337
@@ -62,13 +62,9 @@ Plots were created from the failure data to show time between failures, cumulati
 **Failure Rate**   
 ![Failure Rate](Part%201/screenshots/failure_rate.png) 
 
-### Plots from reliability growth model tools 
-
-
-
 ## A discussion on decision making given a target failure rate
-
-
+The failure rate vs target failure rate ratio can be plotted to see how the failure rate changes with time. Ideally, to meet the target failure rate, the ratio of failure rate vs target failure rate would reach 1. However in practice, this could take a long time to reach the goal so the failure rate vs target failure rate ratio shouldn't exceed 0.5 and this can be acceptable. The reliability growth models can help in making decisions with a target failure rate because the prediction of the model can be used to determine how much more time would be required to achieve the target failure rate or what increased testing effort is required if the system is not expected to reach the target failure rate. If the predicted failure rate does not appear to be close to reaching the target failure rate by the end of the testing, then decisions could be made to add more testing resources, or deferring some of the features of the system to a future release date. There could also be a decision made to adjust balance between the goals for failure rate, time, and costs. 
+For example, in our system, the failure rate after 31 time intervals is 2.968. If the goal is to reach a failure rate of 1.5, the reliability growth model can be used to assess at what time the failure rate would decrease to 1.5 based on the predicted number of failures associated with the model. We provide the model with the failure-count data like we did in this assignment, and determine which reliability growth model best fits the data. Then we can use the model to project the future failure intensity and estimate how much more testing time is needed to reach the failure target rate. If the failure rate isn't decreasing, we may need to review the current test coverage and provide modifications to the testing strategy. The use of reliability growth models to compare with a target failure rate can help with project planning and risk management. 
 
 ## A discussion on the advantages and disadvantages of reliability growth analysis
 ### Advantages   
@@ -192,6 +188,7 @@ While the exact minimum MTTF is **~0.051048**, using **98 failures per 5 interva
 # How the team work/effort was divided and managed
 
 # Difficulties encountered, challenges overcome, and lessons learned
+During the Reliability Growth Testing phase, there were several difficulties encountered. One of the main challenges was actually getting the software tools to work properly and trying to find a tool that could provide the plots and metrics that were requested for the assignment. Most of the tools seem to only be available for Windows or Linux platforms, so some team members were not able to get the tool working on Mac systems. Some of the tools shared during the lecture session that could provide more detailed plots including reliability and reliability predictions were not accessible. There appeared to be several bugs in the C-SFRAT tool, and we were not able to enter a target failure intensity in the software to compare predictions to a target because this functionality was not working for us. We also were not able to plot the reliability from the tool because the C-SFRAT tool does not produce this type of plot. We ended up working with the failure count data manually to calculate the laplace factors and determine the useful range of data, since the C-SFRAT tool also did not provide this functionality. We learned a lot about the Laplace test and making decisions based on the outcome of this test since we had to perform the calculation manually. We also manually manipulated the given failure data to plot time between failures, cumulative failures, failure intensity, and reliability. This also resulted in learning a lot more about how these calculations are performed. There was also some difficulty in working with the given failure count data since we were only provided the time intervals, failure counts per interval and then the other covariate variables for the reliability growth model. We didn't have the information about how long the time intervals were, or whether the failures were evenly spaced within the intervals, so we had to make assumptions in order to develop the plots. 
 
 When working on the Reliability Demonstration Chart, there were several difficulties encountered. First off, in the spreadsheet provided all of the tabs were frozen initially which made it difficult to understand the formulas and how the spreadsheet worked. Once we unfroze all the tabs in the spreadsheet, we then needed to update many of different tabs as the failure data only had room for 16 oberservations. Once we added all the additional observation slots (92 oberservations total), we then had to update the Plot Data tab so that you could visualize all these oberservations on the R-demo-chart. This involved adding many additional lines in the Reject, Continue, and Accept lines, as well as the event counts for unit tick marks. Further, once the MTTF was changed in the Failure Data tab, we had to manually change the scale of the R-Demo-Chart in order to easily visualize the Oberservations on the chart. Overall, the Reliability Demonstration Chart spreadsheet was a bit difficult to work with given the manual changes needed in order to suport the additional oberservations. A more flexible chart with greater observation slots and automatic chart scaling would have helped to make this section for straightforward. We learned a lot about the intricacies of spreadsheet given the manual effort to alter it to support the additional observations.
 
