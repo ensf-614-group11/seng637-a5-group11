@@ -247,10 +247,14 @@ While the exact minimum MTTF is **~0.051048**, using **98 failures per 5 interva
 - Works even with sparse or limited data points.
 - Its a fairly simple method however very clearly visualizes the reliability of the system. The accept/continue/reject regions make it very clear if the system is acceptable or not.
 - By changing MTTF in the plot, you can visualize the system's reliability at different standards of MTTF. This is useful in real-world applications because businesses will often have a specific MTTF in mind in their requirements when developing the application.
+- Regulatory & contractual compliance: useful in industries like aerospace or military where proving reliability to a certain confidence level is mandatory.
 
 ### Disadvantages:
 - It has nothing on analyzing trends in the reliability of the system.
 - Not a very powerful tool. It provides a snapshot of the system's performance but does not predict its future performance.
+- It is sensitive to input accuracy, as the results are only as good as the estimates for reliability targets, failure rates, etc.
+- High reliability goals with high confidence levels can require larger sample sizes or long test durations.
+- Limited to pass/fail outcomes, as it doesn’t consider modes of failure, severity, or degradation over time.
 
 
 # Comparison of Results
