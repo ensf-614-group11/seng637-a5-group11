@@ -242,11 +242,52 @@ While the exact minimum MTTF is **~0.051048**, using **98 failures per 5 interva
 
 ## A discussion on the advantages and disadvantages of RDC
 
+### Advantages:
+- Easy to implement. The tool for RDC was an Excel spreadsheet, and did not require any other software.
+- Works even with sparse or limited data points.
+- Its a fairly simple method however very clearly visualizes the reliability of the system. The accept/continue/reject regions make it very clear if the system is acceptable or not.
+- By changing MTTF in the plot, you can visualize the system's reliability at different standards of MTTF. This is useful in real-world applications because businesses will often have a specific MTTF in mind in their requirements when developing the application.
+
+### Disadvantages:
+- It has nothing on analyzing trends in the reliability of the system.
+- Not a very powerful tool. It provides a snapshot of the system's performance but does not predict its future performance.
+
+
 # Comparison of Results
+
+Results from Reliability Growth:
+**MTTF:** 0.337
+**Failure Rate:** 2.968 failures/unit time
+**Reliability Estimate:** `1.11 × 10⁻⁴⁰`
+
+Results from RDC:
+**MTTF:** 0.051 (Any MTTF greater than this causes the system to be rejected)
+**Failure Rate:** 19.589 failures/unit time (Calculated by using Failure Rate = 1/MTTF)
+**Reliability Estimate:** `1.84 × 10⁻²⁶⁴` (Calculated with t = 31 intervals like in the Reliability Growth section)
+
+As can be seen, the two methods showed very different results, with RDC showing the system to have a much lower MTTF than Reliability Growth. In turn, failure rate was much higher from RDC and Reliability was much lower. This makes sense since in the original data, there were very high failure counts in the early time intervals, making it easier for the system to cross into the reject portion of the RDC plot. RDC assumes a failure uniform distribution of failures so when the failures are concentrated very highly in the beginning, the resulting MTTF is very low.
+
+However, both methods show that the system is very unreliable, with both Reliability Estimates being very close to 0. 
+
+
 
 # Discussion on Similarity and Differences of the Two Techniques
 
+### Similarities:
+- Both use the metric MTTF as a metric for the general reliability of the system.
+- Both are data driven, they use data in order to measure the reliability of the system.
+- Both assess the reliability of the SUT. They both are able to provide a measure of whether a software system is becoming more reliable or less reliable over time.
+
+### Differences:
+- Reliability Growth requires specialized software whereas RDC only requires Excel.
+- Reliability Growth generally requires much more data than RDC to work properly.
+- Reliability Growth is able to predict future reliability while RDC is unable to.
+- Reliability Growth uses statistical modelling while RDC is based on graphing.
+
+
 # How the team work/effort was divided and managed
+
+From the four group members, two pairs were formed, with one taking on Reliability Growth in Part 1, and the other doing RDC in Part 2. After performing the analysis on their respective parts, each pair wrote the parts of the report relevant to the section and then the remaining sections that didn't belong to either part of the assignment (such as 'How the team work/effort was divided and managed) was divided evenly the group members.
 
 # Difficulties encountered, challenges overcome, and lessons learned
 During the Reliability Growth Testing phase, there were several difficulties encountered. One of the main challenges was actually getting the software tools to work properly and trying to find a tool that could provide the plots and metrics that were requested for the assignment. Most of the tools seem to only be available for Windows or Linux platforms, so some team members were not able to get the tool working on Mac systems. Some of the tools shared during the lecture session that could provide more detailed plots including reliability and reliability predictions were not accessible. There appeared to be several bugs in the C-SFRAT tool, and we were not able to enter a target failure intensity in the software to compare predictions to a target because this functionality was not working for us. We also were not able to plot the reliability from the tool because the C-SFRAT tool does not produce this type of plot. We ended up working with the failure count data manually to calculate the laplace factors and determine the useful range of data, since the C-SFRAT tool also did not provide this functionality. We learned a lot about the Laplace test and making decisions based on the outcome of this test since we had to perform the calculation manually. We also manually manipulated the given failure data to plot time between failures, cumulative failures, failure intensity, and reliability. This also resulted in learning a lot more about how these calculations are performed. There was also some difficulty in working with the given failure count data since we were only provided the time intervals, failure counts per interval and then the other covariate variables for the reliability growth model. We didn't have the information about how long the time intervals were, or whether the failures were evenly spaced within the intervals, so we had to make assumptions in order to develop the plots. 
