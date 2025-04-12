@@ -1,1 +1,8 @@
-# seng637-a5-group11
+## SENG637 Assignment 5
+| Group \#:      |   11  |
+| -------------- | --- |
+| Student Names: |     |
+|Steven Au       |     |
+|Laurel Flanagan |     |
+|Rhys Wickens    |     |
+|Austen Zhang    |     |
